@@ -10,6 +10,7 @@ namespace _2_Kolekcje_generyczne
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
