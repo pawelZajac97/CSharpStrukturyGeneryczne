@@ -23,6 +23,8 @@ namespace _2_Kolekcje_generyczne
                 liczby.Add(1);
             }
 
+            
+
            
 
 
