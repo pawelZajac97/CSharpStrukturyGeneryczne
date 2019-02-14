@@ -19,7 +19,7 @@ namespace _2_Kolekcje_generyczne
 
             while (Kolejka.Count > 0)
             {
-               var pracownik = Kolejka.Dequeue();
+               var pracownik = Kolejka.Dequeue(); // zwraca element z kolejki i go usuwa
                 Console.WriteLine(pracownik.imie + " " + pracownik.nazwisko);
             }
 
