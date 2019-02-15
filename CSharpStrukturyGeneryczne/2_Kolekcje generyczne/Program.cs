@@ -12,10 +12,44 @@ namespace _2_Kolekcje_generyczne
         {
             // Kolejka();
             //  Stos();
-           // HashSet();
+            // HashSet();
+            //LinkedList();
+            //LinkedList2();
+        }
+
+        private static void LinkedList2()
+        {
+            LinkedList<int> lista = new LinkedList<int>(); // Lista w której elementy zawierają wskaźnik do poprzedniego i następnego elementu
+            lista.AddFirst(5);
+            lista.AddFirst(6);
+            lista.AddFirst(7);
+            var elementPierwszy = lista.First; // Odnieśienie do pierwszego elementu listy. Typ LinkedListNode
+            var elementOstatni = lista.Last;
+            lista.AddAfter(elementPierwszy, 10);
+            lista.AddBefore(elementPierwszy, 20);
+
+            var wezel = lista.First;
+            while (wezel != null) // null gdy wyświetlimy wszystkie elementy;
+            {
+                Console.WriteLine(wezel.Value);
+                wezel = wezel.Next;
+            }
+        }
+
+        private static void LinkedList()
+        {
+            LinkedList<int> lista = new LinkedList<int>();
+            lista.AddFirst(5);
+            lista.AddFirst(6); // liczba 6 bedzie dodana przed liczbe 5
+            lista.AddFirst(7); // liczba -""-
+            lista.AddLast(1);
+            lista.AddLast(2);
 
 
-
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         private static void  HashSet()
