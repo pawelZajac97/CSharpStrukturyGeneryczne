@@ -12,7 +12,7 @@ namespace _2_Kolekcje_generyczne
         {
             //Kolejka();
             //Stos();
-            // HashSet();
+            //HashSet();
             //LinkedList();
             //LinkedList2();
             //Dictonary();
@@ -20,6 +20,38 @@ namespace _2_Kolekcje_generyczne
             //SortedDictionary();
             //SortedList();
             //SortedHash();
+            var pracownicy = new DziałyKolekcja();
+
+           
+
+            pracownicy.Add("Ksiegowosc",new Pracownik { nazwisko = "Nowak" })
+                      .Add("Ksiegowosc",new Pracownik { nazwisko = "Kowal" })
+                      .Add("Ksiegowosc",new Pracownik { nazwisko = "Kaczor" })
+                      .Add("Ksiegowosc",new Pracownik { nazwisko = "Bogacki" })
+                      .Add("Ksiegowosc", new Pracownik { nazwisko = "Nowak" });
+
+            
+
+            pracownicy.Add("Sprzedaż",new Pracownik { nazwisko = "Nowak" })
+                      .Add("Sprzedaż",new Pracownik { nazwisko = "Głowacki" })
+                      .Add("Sprzedaż",new Pracownik { nazwisko = "Czapla" })
+                      .Add("Sprzedaż",new Pracownik { nazwisko = "Nowak" });
+
+            foreach (var item in pracownicy) // literuje po kluczu
+            {
+                Console.WriteLine(item.Key);
+                foreach (var pracownik in item.Value) // literuje po wartościach danego klucza
+                {
+                    Console.WriteLine("\t" + pracownik.nazwisko);
+                }
+            }
+
+
+
+
+
+
+
         }
 
         private static void SortedHash()
