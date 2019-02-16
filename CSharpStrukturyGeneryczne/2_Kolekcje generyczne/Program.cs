@@ -10,11 +10,128 @@ namespace _2_Kolekcje_generyczne
     {
         static void Main(string[] args)
         {
-            // Kolejka();
-            //  Stos();
+            //Kolejka();
+            //Stos();
             // HashSet();
             //LinkedList();
             //LinkedList2();
+            //Dictonary();
+            //DictonaryAdvanced();
+            //SortedDictionary();
+            //SortedList();
+            //SortedHash();
+        }
+
+        private static void SortedHash()
+        {
+            var set = new SortedSet<int>();
+            set.Add(8);
+            set.Add(6);
+            set.Add(5);
+            set.Add(3);
+            set.Add(2);
+            set.Add(1);
+
+            foreach (var item in set)
+            {
+                Console.WriteLine(item);
+            }
+
+            var set2 = new SortedSet<string>();
+            set2.Add("tomek");
+            set2.Add("iza");
+            set2.Add("ola");
+            set2.Add("ala");
+            set2.Add("piotr");
+            set2.Add("beata");
+
+            foreach (var item in set2)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void SortedList()
+        {
+            var listaPosortowana = new SortedList<int, string>(); // bardziej zooptymalizowanie niż SortedDictronary. Jak najszybsza iteracja(po wszystkich elementach).
+
+            listaPosortowana.Add(3, "trzy");
+            listaPosortowana.Add(1, "jeden");
+            listaPosortowana.Add(4, "cztery");
+            listaPosortowana.Add(2, "dwa");
+
+            foreach (var item in listaPosortowana)
+            {
+                Console.WriteLine(item.Value);
+            }
+        }
+
+        private static void SortedDictionary()
+        {
+            var pracownicy = new SortedDictionary<string, List<Pracownik>>(); // sortuje po kluczu. Lepsza do wyszuiwania elementów po określonym kluczu niż Sorted List. Jednak więcej zużywa pamięci.
+            pracownicy.Add("Sprzedaż", new List<Pracownik> { new Pracownik { imie = "Jan", nazwisko = "Kowal"},
+                                                             new Pracownik { imie="Tomek" , nazwisko ="Nowak"},
+                                                             new Pracownik { imie = "Marcin", nazwisko = "Bien"} });
+            pracownicy.Add("Informatyka", new List<Pracownik> { new Pracownik { imie = "Marcin", nazwisko = "Kowal"},
+                                                                new Pracownik { imie = "Tomek", nazwisko ="Wrobel"} });
+            pracownicy.Add("Ksiegowosc", new List<Pracownik> {  new Pracownik { imie = "Olek", nazwisko = "Kowalski"},
+                                                                new Pracownik { imie = "Bartek", nazwisko ="Nawrocko"},
+                                                                new Pracownik { imie = "Jurek", nazwisko = "Pytel"},
+                                                                new Pracownik { imie = "Robert", nazwisko ="Stach"}});
+
+            foreach (var item in pracownicy)
+            {
+                Console.WriteLine($"Ilosc pracownikow w dziale {item.Key} wynosi {item.Value.Count}");
+            }
+        }
+
+        private static void DictonaryAdvanced()
+        {
+            var pracownicy = new Dictionary<string, List<Pracownik>>(); // nie wolno dodawać duplikatu klucza
+
+            pracownicy.Add("Ksiegowosc", new List<Pracownik>() { new Pracownik { nazwisko = "Nowak" },
+                                                                 new Pracownik {nazwisko ="Kowal"},
+                                                                 new Pracownik { nazwisko = "Kaczor" } });
+
+            pracownicy["Ksiegowosc"].Add(new Pracownik { nazwisko = "Nowak" });
+
+            pracownicy.Add("Informatyka", new List<Pracownik>() { new Pracownik {nazwisko = "Kowalski" },
+                                                                  new Pracownik { nazwisko = "Bogacki" } });
+
+            foreach (var item in pracownicy)
+            {
+                Console.WriteLine("Dział :" + item.Key);
+
+                foreach (var pracownik in item.Value)
+                {
+                    Console.WriteLine(pracownik.nazwisko);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Pracownicy z ksiegowosci");
+
+            foreach (var item in pracownicy["Ksiegowosc"])
+            {
+                Console.WriteLine(item.nazwisko);
+            }
+        }
+
+        private static void Dictonary()
+        {
+            var pracownicy = new Dictionary<string, Pracownik>(); // nie wolno dodawać duplikatu klucza
+
+            pracownicy.Add("Nowak", new Pracownik { nazwisko = "Nowak" });
+            pracownicy.Add("Kowal", new Pracownik { nazwisko = "Kowal" });
+            pracownicy.Add("Kaczor", new Pracownik { nazwisko = "Kaczor" });
+
+
+
+            var kowal = pracownicy["Kowal"];
+
+            foreach (var pracownik in pracownicy)
+            {
+                Console.WriteLine($"{pracownik.Key}:{pracownik.Value.nazwisko}");
+            }
         }
 
         private static void LinkedList2()
