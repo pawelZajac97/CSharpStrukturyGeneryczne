@@ -14,14 +14,13 @@ namespace _4_MetodyDelegatyGeneryczne
         }
         static void Main(string[] args)
         {
+            Action<double> drukuj = d => Console.WriteLine(d);// delegat generyczny który zwraca void. "d" to parametr nie trzeba podawać typu kompilator sam się domyśli
+
+            Action<int, int, int> test = (a, b, c) => Console.WriteLine(a + b + c);
+            test(1, 2, 3);
             var kolejka = new KolejkaKolowa<double>();
             WprowadzanieDanych(kolejka);
-
-
-            
-            kolejka.Drukuj(KonsolaWypisz); // nie trzeba podawać typu sparametryzowanego gdyż kompilator sam to rozgryzł
-
-          
+            kolejka.Drukuj(d => Console.WriteLine(d)); // przekazanie delegata za pomocą wyrażenia lambda
             PrzetwarzanieDanych(kolejka);
         }
 

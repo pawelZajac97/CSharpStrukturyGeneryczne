@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace _4_MetodyDelegatyGeneryczne
 {
 
-    public delegate void Drukarka<T>(T dane);
+    
 
     public static class KolejkaExtensions
     {
@@ -23,7 +23,7 @@ namespace _4_MetodyDelegatyGeneryczne
             }
         }
 
-        public static void Drukuj<T>(this IKolejka<T> kolejka, Drukarka<T> drukuj)
+        public static void Drukuj<T>(this IKolejka<T> kolejka, Action<T> drukuj)
         {
             foreach (var item in kolejka)
             {
