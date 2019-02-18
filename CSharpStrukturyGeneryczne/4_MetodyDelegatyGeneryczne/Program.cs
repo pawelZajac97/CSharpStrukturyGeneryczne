@@ -4,28 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _3_KlasyIInterfejsyGeneryczne
+namespace _4_MetodyDelegatyGeneryczne
 {
     class Program
     {
+        static void KonsolaWypisz (double dane)
+        {
+            Console.WriteLine(dane);
+        }
         static void Main(string[] args)
         {
-            var kolejka = new KolejkaKolowa<double>(3);
-
+            var kolejka = new KolejkaKolowa<double>();
             WprowadzanieDanych(kolejka);
 
-            var elementyJakoInt = kolejka.ElementJako<int>();
-            foreach (var item in elementyJakoInt)
-            {
-                Console.WriteLine(item);
-            }
+
+            
+            kolejka.Drukuj(KonsolaWypisz); // nie trzeba podawać typu sparametryzowanego gdyż kompilator sam to rozgryzł
+
+          
             PrzetwarzanieDanych(kolejka);
         }
 
         private static void PrzetwarzanieDanych(IKolejka<double> kolejka)
         {
             var suma = 0.0;
-            Console.WriteLine("W naszej kolejce jest : ");
+            Console.WriteLine($"W naszej kolejce jest : ");
 
 
             while (!kolejka.JestPusty)

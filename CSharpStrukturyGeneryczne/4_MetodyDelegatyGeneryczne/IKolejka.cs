@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _3_KlasyIInterfejsyGeneryczne
+namespace _4_MetodyDelegatyGeneryczne
 {
     public interface IKolejka<T> : IEnumerable<T>
     {
@@ -9,8 +9,5 @@ namespace _3_KlasyIInterfejsyGeneryczne
 
         T Czytaj();
         void Zapisz(T wartosc);
-
-        IEnumerable<Twyjscie> ElementJako<Twyjscie>();
-       
     }
 }

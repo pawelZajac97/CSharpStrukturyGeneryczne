@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace _3_KlasyIInterfejsyGeneryczne
+namespace _4_MetodyDelegatyGeneryczne
 {
     public class DuzaKolejka<T> : IKolejka<T>
     {
@@ -33,16 +37,7 @@ namespace _3_KlasyIInterfejsyGeneryczne
             kolejka.Enqueue(wartosc);
         }
 
-        public IEnumerable<Twyjscie> ElementJako<Twyjscie>()
-        {
-            var konwerter = TypeDescriptor.GetConverter(typeof(T));
-
-            foreach(var item in kolejka)
-            {
-                var wynik = konwerter.ConvertTo(item, typeof(Twyjscie));
-                yield return (Twyjscie)wynik;
-            }
-        }
+  
 
         public IEnumerator<T> GetEnumerator() // pozwala robic iteracje po kolekcji
         {
@@ -57,9 +52,10 @@ namespace _3_KlasyIInterfejsyGeneryczne
         IEnumerator IEnumerable.GetEnumerator() // zwraca GetEnumerator który pozwala użyć go w metodzie wyżej GetEnumaerator();
         {
             return GetEnumerator();
-           
+
         }
 
-    
+
     }
 }
+
