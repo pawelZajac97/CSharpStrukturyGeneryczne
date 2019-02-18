@@ -14,18 +14,17 @@ namespace _4_MetodyDelegatyGeneryczne
         }
         static void Main(string[] args)
         {
-            Action<bool> drukuj = d => Console.WriteLine(d);// delegat generyczny który zwraca void. "d" to parametr nie trzeba podawać typu kompilator sam się domyśli
-
-            Func<double, double> potegowanie = d => d * d; // delegat generyczny który zwraca wartość.
-            Func<double, double, double> dodaj = (x, y) => x + y;
-            Predicate<double> JestMniejszeOdSto = d => d < 225; // delegat generyczny który zwraca wartość logiczną.
-
-            drukuj(JestMniejszeOdSto(potegowanie(dodaj(6, 9))));
-
-
-
+            
             var kolejka = new KolejkaKolowa<double>();
             WprowadzanieDanych(kolejka);
+           
+            var jakoData = kolejka.Mapuj(d => new DateTime(2018, 1, 1).AddDays(d));
+
+            foreach (var item in jakoData)
+            {
+                Console.WriteLine(item);
+            }
+
             kolejka.Drukuj(d => Console.WriteLine(d)); // przekazanie delegata za pomocą wyrażenia lambda
             PrzetwarzanieDanych(kolejka);
         }
