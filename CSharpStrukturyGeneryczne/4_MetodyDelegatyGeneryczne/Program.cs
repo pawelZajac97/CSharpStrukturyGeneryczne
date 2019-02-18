@@ -15,18 +15,19 @@ namespace _4_MetodyDelegatyGeneryczne
         static void Main(string[] args)
         {
             
-            var kolejka = new KolejkaKolowa<double>();
+            var kolejka = new KolejkaKolowa<double>(pojemnosc:3);
+            kolejka.elementUsunięty += Kolejka_elementUsunięty;
+
+
+
             WprowadzanieDanych(kolejka);
-           
-            var jakoData = kolejka.Mapuj(d => new DateTime(2018, 1, 1).AddDays(d));
-
-            foreach (var item in jakoData)
-            {
-                Console.WriteLine(item);
-            }
-
             kolejka.Drukuj(d => Console.WriteLine(d)); // przekazanie delegata za pomocą wyrażenia lambda
             PrzetwarzanieDanych(kolejka);
+        }
+
+        private static void Kolejka_elementUsunięty(object sender, ElementUsunietyEventArgs<double> e)
+        {
+            Console.WriteLine($"Kolejka jest pełna. Element usunięty to : {e.ElementUsuniety}. Nowy element to {e.ElementNowy}");
         }
 
         private static void PrzetwarzanieDanych(IKolejka<double> kolejka)

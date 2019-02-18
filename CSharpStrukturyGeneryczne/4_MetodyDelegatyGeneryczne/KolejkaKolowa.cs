@@ -11,6 +11,9 @@ namespace _4_MetodyDelegatyGeneryczne
         {
             private int _pojemnosc;
 
+            public event EventHandler<ElementUsunietyEventArgs<T>> elementUsunięty;
+
+
             public KolejkaKolowa(int pojemnosc = 5)
             {
                 _pojemnosc = pojemnosc;
@@ -21,18 +24,40 @@ namespace _4_MetodyDelegatyGeneryczne
                 base.Zapisz(wartosc);
                 if (kolejka.Count > _pojemnosc)
                 {
-                    kolejka.Dequeue();
+                   var usuniety = kolejka.Dequeue();
+                   PoUsunieciuElementu(usuniety, wartosc);
                 }
             }
 
-            public override bool JestPelny
+        private void PoUsunieciuElementu(T usuniety, T wartosc)
+        {
+            if (elementUsunięty != null)
+            {
+                var args = new ElementUsunietyEventArgs<T>(usuniety, wartosc);
+                elementUsunięty(this, args);
+            }
+        }
+
+        public override bool JestPelny
             {
                 get
                 {
                     return kolejka.Count == _pojemnosc;
                 }
             }
-        }
 
+
+    }
+    public class ElementUsunietyEventArgs<T> : EventArgs
+    {
+        public T ElementUsuniety { get; set; }
+        public T ElementNowy { get; set; }
+
+        public ElementUsunietyEventArgs(T elementusuniety, T elementnowy)
+        {
+            ElementUsuniety = elementusuniety;
+            ElementNowy = elementnowy;
+        }
+    }
     
 }
