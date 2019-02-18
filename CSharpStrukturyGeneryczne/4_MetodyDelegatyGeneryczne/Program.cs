@@ -14,13 +14,13 @@ namespace _4_MetodyDelegatyGeneryczne
         }
         static void Main(string[] args)
         {
-            Action<double> drukuj = d => Console.WriteLine(d);// delegat generyczny który zwraca void. "d" to parametr nie trzeba podawać typu kompilator sam się domyśli
+            Action<bool> drukuj = d => Console.WriteLine(d);// delegat generyczny który zwraca void. "d" to parametr nie trzeba podawać typu kompilator sam się domyśli
 
             Func<double, double> potegowanie = d => d * d; // delegat generyczny który zwraca wartość.
             Func<double, double, double> dodaj = (x, y) => x + y;
-            drukuj((dodaj(potegowanie(3),4)));
-            
+            Predicate<double> JestMniejszeOdSto = d => d < 225; // delegat generyczny który zwraca wartość logiczną.
 
+            drukuj(JestMniejszeOdSto(potegowanie(dodaj(6, 9))));
 
 
 
